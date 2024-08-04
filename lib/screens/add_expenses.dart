@@ -1,3 +1,4 @@
+import 'package:citilink_app/config/router/routes.dart';
 import 'package:citilink_app/data/data.dart';
 import 'package:citilink_app/provider/state_notifier_provider.dart';
 import 'package:citilink_app/widgets/widgets.dart';
@@ -52,7 +53,7 @@ int generateRandomInteger(int min, int max) {
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.of(ctx).pop();
+              context.go(RoutesLocation.home); 
             },
             child: const Text('OK'),
           ),
@@ -60,7 +61,7 @@ int generateRandomInteger(int min, int max) {
       ),
     );
     ref.read(expenseProvider.notifier).addExpense(expenses);
-
+     
   }else{
     showDialog(context: context, builder: (ctx)=> AlertDialog(
       title: const Text('Error'),
