@@ -1,10 +1,15 @@
+import 'package:citilink_app/config/router/routes.dart';
 import 'package:citilink_app/data/data.dart';
 import 'package:flutter/material.dart';
 import 'package:citilink_app/utils/utils.dart';
 import 'package:citilink_app/widgets/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
+  static HomeScreen builder(BuildContext context, GoRouterState state) =>
+      const HomeScreen();
+      
   const HomeScreen({super.key});
 
   @override
@@ -66,57 +71,57 @@ class HomeScreen extends StatelessWidget {
                       Expenses(
                         id: 1,
                         title: '',
-                        time:'',
+                        time: '',
                         day: 'Monday',
-                        amount: 100 ,
+                        amount: 100,
                         isRecent: false,
                       ),
                       Expenses(
                         id: 2,
                         title: '',
-                        time:'',
+                        time: '',
                         day: 'Tuesday',
-                        amount: 34 ,
+                        amount: 34,
                         isRecent: false,
                       ),
                       Expenses(
                         id: 3,
                         title: '',
-                        time:'',
+                        time: '',
                         day: 'Wednesday',
-                        amount: 34 ,
+                        amount: 34,
                         isRecent: false,
                       ),
                       Expenses(
                         id: 4,
                         title: '',
-                        time:'',
+                        time: '',
                         day: 'Thursday',
-                        amount: 34 ,
+                        amount: 34,
                         isRecent: false,
                       ),
                       Expenses(
                         id: 5,
                         title: '',
-                        time:'',
+                        time: '',
                         day: 'Friday',
-                        amount: 34 ,
+                        amount: 34,
                         isRecent: false,
                       ),
                       Expenses(
                         id: 6,
                         title: '',
-                        time:'',
+                        time: '',
                         day: 'Saturday',
-                        amount: 34 ,
+                        amount: 34,
                         isRecent: false,
                       ),
                       Expenses(
                         id: 7,
                         title: '',
-                        time:'',
+                        time: '',
                         day: 'Sunday',
-                        amount: 34 ,
+                        amount: 34,
                         isRecent: false,
                       ),
                     ],
@@ -128,42 +133,42 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const Gap(20),
                   const DisplayListOfExpenses(expenses: [
-                     Expenses(
-                        id: 1,
-                        title: 'Buy Milk',
-                        time: '19:00 PM',
-                        day:'',
-                        amount: 10 ,
-                        isRecent: true,
-                      ),
-                      Expenses(
-                        id: 2,
-                        title: 'Monthly subscription',
-                        time: '17:00 PM',
-                        day:'',
-                        amount: 12 ,
-                        isRecent: true,
-                      ),
-                      Expenses(
-                        id: 3,
-                        title: 'Monthly subscription',
-                        time: '14:00 PM',
-                        day:'',
-                        amount: 12 ,
-                        isRecent: true,
-                      ),
-                      Expenses(
-                        id: 4,
-                        title: 'Lunch',
-                        time: '12:07 PM',
-                        day:'',
-                        amount: 12 ,
-                        isRecent: true,
-                      ),
+                    Expenses(
+                      id: 1,
+                      title: 'Buy Milk',
+                      time: '19:00 PM',
+                      day: '',
+                      amount: 10,
+                      isRecent: true,
+                    ),
+                    Expenses(
+                      id: 2,
+                      title: 'Monthly subscription',
+                      time: '17:00 PM',
+                      day: '',
+                      amount: 12,
+                      isRecent: true,
+                    ),
+                    Expenses(
+                      id: 3,
+                      title: 'Monthly subscription',
+                      time: '14:00 PM',
+                      day: '',
+                      amount: 12,
+                      isRecent: true,
+                    ),
+                    Expenses(
+                      id: 4,
+                      title: 'Lunch',
+                      time: '12:07 PM',
+                      day: '',
+                      amount: 12,
+                      isRecent: true,
+                    ),
                   ], isRecent: false),
                   const Gap(20),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => context.push(RoutesLocation.addExpenses),
                     child: const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: DisplayWhiteText(
