@@ -22,7 +22,7 @@ class ExpenseDetails extends StatelessWidget {
           Expanded(
             child: ListView(
               children: List.generate(
-                5, // Number of dummy items
+                3, // Number of dummy items
                 (index) => ListTile(
                   leading: const Icon(Icons.receipt_long, color: Colors.blueGrey),
                   title: Text('Dummy Item ${index + 1}'),

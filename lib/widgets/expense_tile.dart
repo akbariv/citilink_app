@@ -44,7 +44,7 @@ class ExpenseTile extends StatelessWidget {
                     style: context.textTheme.titleMedium?.copyWith(
                       color: Colors.black,
                       fontSize: 16, 
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 if (expense.title.isNotEmpty)
