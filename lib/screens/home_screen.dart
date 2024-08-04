@@ -1,3 +1,4 @@
+import 'package:citilink_app/data/data.dart';
 import 'package:flutter/material.dart';
 import 'package:citilink_app/utils/utils.dart';
 import 'package:citilink_app/widgets/widgets.dart';
@@ -60,14 +61,95 @@ class HomeScreen extends StatelessWidget {
                     style: context.textTheme.headlineMedium,
                   ),
                   const Gap(20),
-                  const DisplayListOfExpenses(expenses: []),
+                  const DisplayListOfExpenses(
+                    expenses: [
+                      Expenses(
+                        id: 1,
+                        title: '',
+                        time: 'Monday',
+                        amount: 100 ,
+                        isRecent: false,
+                      ),
+                      Expenses(
+                        id: 2,
+                        title: '',
+                        time: 'Tuesday',
+                        amount: 34 ,
+                        isRecent: false,
+                      ),
+                      Expenses(
+                        id: 3,
+                        title: '',
+                        time: 'Wednesday',
+                        amount: 34 ,
+                        isRecent: false,
+                      ),
+                      Expenses(
+                        id: 4,
+                        title: '',
+                        time: 'Thursday',
+                        amount: 34 ,
+                        isRecent: false,
+                      ),
+                      Expenses(
+                        id: 5,
+                        title: '',
+                        time: 'Friday',
+                        amount: 34 ,
+                        isRecent: false,
+                      ),
+                      Expenses(
+                        id: 6,
+                        title: '',
+                        time: 'Saturday',
+                        amount: 34 ,
+                        isRecent: false,
+                      ),
+                      Expenses(
+                        id: 7,
+                        title: '',
+                        time: 'Sunday',
+                        amount: 34 ,
+                        isRecent: false,
+                      ),
+                    ],
+                  ),
                   const Gap(20),
                   Text(
                     'Recent Expenses',
                     style: context.textTheme.headlineMedium,
                   ),
                   const Gap(20),
-                  const DisplayListOfExpenses(expenses: [], isRecent: true),
+                  const DisplayListOfExpenses(expenses: [
+                     Expenses(
+                        id: 1,
+                        title: 'Buy Milk',
+                        time: '19:00 PM',
+                        amount: 10 ,
+                        isRecent: false,
+                      ),
+                      Expenses(
+                        id: 2,
+                        title: 'Monthly subscription',
+                        time: '17:00 PM',
+                        amount: 12 ,
+                        isRecent: false,
+                      ),
+                      Expenses(
+                        id: 3,
+                        title: 'Monthly subscription',
+                        time: '14:00 PM',
+                        amount: 12 ,
+                        isRecent: false,
+                      ),
+                      Expenses(
+                        id: 4,
+                        title: 'Lunch ',
+                        time: '12:07 PM',
+                        amount: 12 ,
+                        isRecent: false,
+                      ),
+                  ], isRecent: true),
                   const Gap(20),
                   ElevatedButton(
                     onPressed: () {},

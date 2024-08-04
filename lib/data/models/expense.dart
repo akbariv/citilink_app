@@ -1,13 +1,14 @@
 import 'package:equatable/equatable.dart';
+import 'package:citilink_app/utils/utils.dart';
 
-class Expense extends Equatable {
+class Expenses extends Equatable {
   final int? id;
   final String title;
   final String time;
   final int amount;
   final bool isRecent;
 
-  const Expense(
+  const Expenses(
       {required this.id,
       required this.title,
       required this.time,
