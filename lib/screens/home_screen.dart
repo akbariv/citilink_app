@@ -1,12 +1,12 @@
 import 'package:citilink_app/config/router/routes.dart';
 import 'package:citilink_app/data/data.dart';
+import 'package:citilink_app/provider/state_notifier_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:citilink_app/utils/utils.dart';
 import 'package:citilink_app/widgets/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 
 class HomeScreen extends ConsumerWidget {
   static HomeScreen builder(BuildContext context, GoRouterState state) =>
@@ -18,6 +18,38 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = context.colorScheme;
     final deviceSize = context.deviceSize;
+
+    final expenses = ref.watch(expenseProvider);
+
+    int sundayExpense = expenses
+        .where((expense) => expense.day == 'Sunday')
+        .fold(0, (sum, expense) => sum + expense.amount);
+
+    int mondayExpense = expenses
+        .where((expense) => expense.day == 'Monday')
+        .fold(0, (sum, expense) => sum + expense.amount);
+
+    int tuesdayExpense = expenses
+        .where((expense) => expense.day == 'Tuesday')
+        .fold(0, (sum, expense) => sum + expense.amount);
+
+    int wednesdayExpense = expenses
+        .where((expense) => expense.day == 'Wednesday')
+        .fold(0, (sum, expense) => sum + expense.amount);
+
+    int thursdayExpense = expenses
+        .where((expense) => expense.day == 'Thursday')
+        .fold(0, (sum, expense) => sum + expense.amount);
+
+    int fridayExpense = expenses
+        .where((expense) => expense.day == 'Friday')
+        .fold(0, (sum, expense) => sum + expense.amount);
+
+    int saturdayExpense = expenses
+        .where((expense) => expense.day == 'Saturday')
+        .fold(0, (sum, expense) => sum + expense.amount);
+
+    final totalAmount = expenses.fold(0, (sum, item) => sum + item.amount);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -43,10 +75,10 @@ class HomeScreen extends ConsumerWidget {
                         fontWeight: FontWeight.bold,
                         fontSize: 30,
                       ),
-                      children: const [
+                      children: [
                         TextSpan(
-                          text: '\$ 0',
-                          style: TextStyle(
+                          text: '\$' + totalAmount.toString(),
+                          style: const TextStyle(
                             color: Colors.red, // Red color for the amount
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
@@ -68,14 +100,14 @@ class HomeScreen extends ConsumerWidget {
                     style: context.textTheme.headlineMedium,
                   ),
                   const Gap(20),
-                  const DisplayListOfExpenses(
+                  DisplayListOfExpenses(
                     expenses: [
                       Expenses(
                         id: 1,
                         title: '',
                         time: '',
                         day: 'Monday',
-                        amount: 100,
+                        amount: mondayExpense,
                         isRecent: false,
                       ),
                       Expenses(
@@ -83,7 +115,7 @@ class HomeScreen extends ConsumerWidget {
                         title: '',
                         time: '',
                         day: 'Tuesday',
-                        amount: 34,
+                        amount: tuesdayExpense,
                         isRecent: false,
                       ),
                       Expenses(
@@ -91,7 +123,7 @@ class HomeScreen extends ConsumerWidget {
                         title: '',
                         time: '',
                         day: 'Wednesday',
-                        amount: 34,
+                        amount: wednesdayExpense,
                         isRecent: false,
                       ),
                       Expenses(
@@ -99,7 +131,7 @@ class HomeScreen extends ConsumerWidget {
                         title: '',
                         time: '',
                         day: 'Thursday',
-                        amount: 34,
+                        amount: thursdayExpense,
                         isRecent: false,
                       ),
                       Expenses(
@@ -107,7 +139,7 @@ class HomeScreen extends ConsumerWidget {
                         title: '',
                         time: '',
                         day: 'Friday',
-                        amount: 34,
+                        amount: fridayExpense,
                         isRecent: false,
                       ),
                       Expenses(
@@ -115,7 +147,7 @@ class HomeScreen extends ConsumerWidget {
                         title: '',
                         time: '',
                         day: 'Saturday',
-                        amount: 34,
+                        amount: saturdayExpense,
                         isRecent: false,
                       ),
                       Expenses(
@@ -123,7 +155,7 @@ class HomeScreen extends ConsumerWidget {
                         title: '',
                         time: '',
                         day: 'Sunday',
-                        amount: 34,
+                        amount: sundayExpense,
                         isRecent: false,
                       ),
                     ],
@@ -134,40 +166,10 @@ class HomeScreen extends ConsumerWidget {
                     style: context.textTheme.headlineMedium,
                   ),
                   const Gap(20),
-                  const DisplayListOfExpenses(expenses: [
-                    Expenses(
-                      id: 1,
-                      title: 'Buy Milk',
-                      time: '19:00 PM',
-                      day: '',
-                      amount: 10,
-                      isRecent: true,
-                    ),
-                    Expenses(
-                      id: 2,
-                      title: 'Monthly subscription',
-                      time: '17:00 PM',
-                      day: '',
-                      amount: 12,
-                      isRecent: true,
-                    ),
-                    Expenses(
-                      id: 3,
-                      title: 'Monthly subscription',
-                      time: '14:00 PM',
-                      day: '',
-                      amount: 12,
-                      isRecent: true,
-                    ),
-                    Expenses(
-                      id: 4,
-                      title: 'Lunch',
-                      time: '12:07 PM',
-                      day: '',
-                      amount: 12,
-                      isRecent: true,
-                    ),
-                  ], isRecent: false),
+                  DisplayListOfExpenses(
+                    expenses: expenses.where((e) => e.isRecent).toList(),
+                    isRecent: true,
+                  ),
                   const Gap(20),
                   ElevatedButton(
                     onPressed: () => context.push(RoutesLocation.addExpenses),
