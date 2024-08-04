@@ -1,12 +1,16 @@
-import 'package:citilink_app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:citilink_app/data/data.dart';
 import 'package:citilink_app/utils/utils.dart';
+import 'package:citilink_app/widgets/widgets.dart';
 import 'common_container.dart';
+import 'expense_tile.dart'; // Ensure this import is correct
 
 class DisplayListOfExpenses extends StatelessWidget {
-  const DisplayListOfExpenses(
-      {super.key, required this.expenses, this.isRecent = false});
+  const DisplayListOfExpenses({
+    super.key,
+    required this.expenses,
+    this.isRecent = false,
+  });
 
   final List<Expenses> expenses;
   final bool isRecent;
@@ -14,8 +18,7 @@ class DisplayListOfExpenses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = context.deviceSize;
-    final height =
-        isRecent ? deviceSize.height * 0.25 : deviceSize.height * 0.3;
+    final height = isRecent ? deviceSize.height * 0.25 : deviceSize.height * 0.3;
     final emptyExpenses = isRecent
         ? 'There are no Recent Expenses'
         : 'There are no expenses this week';
@@ -26,8 +29,7 @@ class DisplayListOfExpenses extends StatelessWidget {
           ? Center(
               child: Text(
                 emptyExpenses,
-                style: context.textTheme.titleMedium
-                    ?.copyWith(color: Colors.black54),
+                style: context.textTheme.titleMedium?.copyWith(color: Colors.black54),
               ),
             )
           : ListView.separated(
@@ -36,12 +38,27 @@ class DisplayListOfExpenses extends StatelessWidget {
               padding: EdgeInsets.zero,
               itemBuilder: (ctx, index) {
                 final expense = expenses[index];
-                return ExpenseTile(
-                  expense: expense,
-                  isRecent: isRecent, // Pass isRecent flag to ExpenseTile
-                );
-              }, 
-              separatorBuilder: (BuildContext context, int index) { 
+                return isRecent
+                    ? ExpenseTile(
+                        expense: expense,
+                        isRecent: isRecent,
+                      )
+                    : InkWell(
+                        onTap: () async {
+                          await showModalBottomSheet(
+                            context: context,
+                            builder: (ctx) {
+                              return ExpenseDetails(expenses: expense);
+                            },
+                          );
+                        },
+                        child: ExpenseTile(
+                          expense: expense,
+                          isRecent: isRecent,
+                        ),
+                      );
+              },
+              separatorBuilder: (BuildContext context, int index) {
                 return const Divider(thickness: 2.0);
               },
             ),

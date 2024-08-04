@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 
 class ExpenseTile extends StatelessWidget {
   const ExpenseTile({super.key, required this.expense, this.isRecent = true});
-  
+
   final Expenses expense;
   final bool isRecent;
 
@@ -34,35 +34,38 @@ class ExpenseTile extends StatelessWidget {
             ),
           ),
           const Gap(8), // Reduced gap
+
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  expense.time,
-                  style: context.textTheme.titleMedium?.copyWith(
-                    color: Colors.black,
-                    fontSize: 16, // Reduced font size
-                    fontWeight: FontWeight.w400, // Adjusted font weight
+                  Text(
+                    expense.day.isNotEmpty ? expense.day : expense.time,
+                    style: context.textTheme.titleMedium?.copyWith(
+                      color: Colors.black,
+                      fontSize: 16, 
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                ),
                 if (expense.title.isNotEmpty)
                   Text(
                     expense.title,
                     style: context.textTheme.titleSmall?.copyWith(
                       color: Colors.black,
-                      fontSize: 14, // Reduced font size
-                      fontWeight: FontWeight.w400, // Adjusted font weight
+                      fontSize: 14, 
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
               ],
             ),
           ),
+
           const Spacer(),
           Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0), // Reduced padding
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 8.0), // Reduced padding
                 child: Text(
                   '\$${expense.amount.toString()}',
                   style: context.textTheme.titleMedium?.copyWith(
