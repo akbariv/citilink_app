@@ -38,7 +38,7 @@ class DisplayListOfExpenses extends StatelessWidget {
               padding: EdgeInsets.zero,
               itemBuilder: (ctx, index) {
                 final expense = expenses[index];
-                return isRecent
+                return expense.day.isEmpty
                     ? ExpenseTile(
                         expense: expense,
                         isRecent: isRecent,
