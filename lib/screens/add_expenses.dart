@@ -1,4 +1,5 @@
 import 'package:citilink_app/data/data.dart';
+import 'package:citilink_app/provider/state_notifier_provider.dart';
 import 'package:citilink_app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -58,6 +59,7 @@ int generateRandomInteger(int min, int max) {
         ],
       ),
     );
+    ref.read(expenseProvider.notifier).addExpense(expenses);
 
   }else{
     showDialog(context: context, builder: (ctx)=> AlertDialog(
@@ -71,24 +73,6 @@ int generateRandomInteger(int min, int max) {
     ),
     );
   }
-
-
-
-    // showDialog(
-    //   context: context,
-    //   builder: (ctx) => AlertDialog(
-    //     title: const Text('Expense Details'),
-    //     content: Text('Title: $title\nAmount: $amount\nDay: $formattedDay\nTime: $formattedTime'),
-    //     actions: [
-    //       TextButton(
-    //         onPressed: () {
-    //           Navigator.of(ctx).pop();
-    //         },
-    //         child: const Text('OK'),
-    //       ),
-    //     ],
-    //   ),
-    // );
   }
 
   @override
