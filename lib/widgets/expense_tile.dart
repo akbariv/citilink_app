@@ -40,22 +40,21 @@ class ExpenseTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                   Text(
-                    expense.day.isNotEmpty ? expense.day : expense.time,
+                    expense.title.isEmpty ? expense.day : expense.title,
                     style: context.textTheme.titleMedium?.copyWith(
                       color: Colors.black,
-                      fontSize: 16, 
+                      fontSize: 18,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                if (expense.title.isNotEmpty)
-                  Text(
-                    expense.title,
-                    style: context.textTheme.titleSmall?.copyWith(
-                      color: Colors.black,
-                      fontSize: 14, 
-                      fontWeight: FontWeight.w400,
-                    ),
+                Text(
+                  expense.title.isEmpty? 'tap to details' : expense.time,
+                  style: context.textTheme.titleMedium?.copyWith(
+                    color: const Color.fromARGB(255, 97, 97, 97),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
                   ),
+                ),
               ],
             ),
           ),
