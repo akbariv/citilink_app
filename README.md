@@ -1,16 +1,19 @@
 # citilink_app
 
-A new Flutter project.
+-Berikut ini Adalah dokumentasi dari Aplikasi Expense Tracker untuk pd CitilinkApp
 
-## Getting Started
+-Main.dart: merupakan Script root dari project ini
+-App Folder: merupakan script dibawah mainDart yang menginisiasi screen ketika project dijalankan,
+-Config Folder: merupakan kumpulan script dan folder untuk mengatur tema dan router control
+-Data Folder: merupakan sebuah folder yang berisikan template untuk menyimpan sebuah object lengkap dengan atribut atribut yang diperlukan
+-Provider Folder: Berisi Script yang dipergunakan khusu provider sebagai statemanagement, provider merupakan bagian dari riverpod.
+-Screens Folder: Berisi script yang mengatur segala screen/layar pada aplikasi
+-Services Folder: Berisikan konfigurasi untuk menampung dan menghit API
+-Utils Folder: part of material untuk desain UI
+-Widgets Folder: berisikan komponen komponen yang nantinya akan dikombinasikan menjadi sebuah screen utuh yang dapat berinteraksi dengan User.
 
-This project is a starting point for a Flutter application.
+MOBILE_DEV_RECRUITMENT 
+AKBAR TOGU RIVALDI DAULAY
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

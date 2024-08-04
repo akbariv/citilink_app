@@ -79,7 +79,7 @@ class HomeScreen extends ConsumerWidget {
                         TextSpan(
                           text: '\$' + totalAmount.toString(),
                           style: const TextStyle(
-                            color: Colors.red, // Red color for the amount
+                            color: Colors.red, 
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
                           ),

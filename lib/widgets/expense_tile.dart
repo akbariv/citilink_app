@@ -13,13 +13,13 @@ class ExpenseTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: 6.0, // Reduced padding
-        horizontal: 12.0, // Reduced padding
+        vertical: 6.0, 
+        horizontal: 12.0, 
       ),
       child: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(6.0), // Reduced padding
+            padding: const EdgeInsets.all(6.0),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(width: 1, color: Colors.white),
@@ -29,11 +29,11 @@ class ExpenseTile extends StatelessWidget {
               child: Icon(
                 isRecent ? Icons.history : Icons.receipt_long_outlined,
                 color: Colors.white,
-                size: 20, // Reduced icon size
+                size: 20,
               ),
             ),
           ),
-          const Gap(8), // Reduced gap
+          const Gap(8), 
 
           Expanded(
             child: Column(
@@ -64,13 +64,13 @@ class ExpenseTile extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 8.0), // Reduced padding
+                    horizontal: 8.0), 
                 child: Text(
                   '\$${expense.amount.toString()}',
                   style: context.textTheme.titleMedium?.copyWith(
                     color: Colors.red,
-                    fontSize: 16, // Reduced font size
-                    fontWeight: FontWeight.w400, // Adjusted font weight
+                    fontSize: 16, 
+                    fontWeight: FontWeight.w400, 
                   ),
                 ),
               ),

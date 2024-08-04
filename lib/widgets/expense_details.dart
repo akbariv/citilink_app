@@ -10,10 +10,8 @@ class ExpenseDetails extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // Get the list of expenses from the provider
     final allExpenses = ref.watch(expenseProvider);
     
-    // Filter expenses that match the day of the selected expense
     final detailExpenses = allExpenses.where((expense) => expense.day == expenses.day).toList();
 
     return Padding(
@@ -25,7 +23,7 @@ class ExpenseDetails extends ConsumerWidget {
             'Expense Details on ${expenses.day}',
             style: context.textTheme.titleLarge,
           ),
-          const SizedBox(height: 20), // Add some space between the text and the list
+          const SizedBox(height: 20), 
           Expanded(
             child: ListView.builder(
               itemCount: detailExpenses.length,
