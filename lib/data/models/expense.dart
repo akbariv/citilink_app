@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class Expenses extends Equatable {
-  final int? id;
+  final int id;
   final String title;
   final String day;
   final String time;
@@ -19,6 +19,6 @@ class Expenses extends Equatable {
 
   @override
   List<Object> get props {
-    return [id!, title, day, time, amount,isRecent];
+    return [id, title, day, time, amount,isRecent];
   }
 }
